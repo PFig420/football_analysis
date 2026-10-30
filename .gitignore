@@ -1,2 +1,17 @@
-*__pycahce__*
-*.pyc
+# the original read "*__pycahce__*", a typo, so caches were never actually ignored
+__pycache__/
+*.py[cod]
+
+.venv/
+.pytest_cache/
+
+# large inputs and generated artefacts
+input_videos/*.mp4
+input_videos/*.avi
+models/*.pt
+output_videos/*.mp4
+output_videos/*.avi
+runs/
+
+# WSL surfaces NTFS alternate data streams (download provenance markers) as files
+*:Zone.Identifier

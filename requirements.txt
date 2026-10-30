@@ -1,0 +1,28 @@
+# Pinned to the versions this was verified against. The README previously listed
+# dependencies in prose only, with no versions.
+#
+#   python -m venv .venv && . .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# For CPU-only torch (much smaller than the default CUDA build):
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+
+numpy==2.5.4
+pandas==3.0.6
+scipy==1.18.1
+scikit-learn==1.9.1
+opencv-python-headless==4.13.0.90
+matplotlib==3.11.2
+PyYAML==6.0.3
+
+# Detection and tracking, both from ultralytics.
+# `supervision` is deliberately NOT a dependency: it used to supply ByteTrack but removed it
+# in 0.31.0, and ultralytics ships the same algorithm. `lap` is what ultralytics' tracker
+# uses for the assignment step -- pinned here so it installs up front rather than being
+# auto-fetched on the first tracked frame.
+ultralytics==8.4.181
+lap==0.5.13
+torch==2.14.1
+torchvision==0.29.1
+
+pytest==9.1.1

@@ -1,0 +1,71 @@
+# Example configuration. Every value here is the built-in default; delete anything you
+# do not want to override and pass the rest with --config.
+#
+# IMPORTANT: pitch.pixel_vertices and length_m/width_m were eyeballed from the sample clip.
+# They are wrong for any other footage. Re-derive them from identifiable pitch lines and
+# set calibrated: true once you have.
+
+pitch:
+  pixel_vertices:
+  - - 110
+    - 1035
+  - - 265
+    - 275
+  - - 910
+    - 260
+  - - 1640
+    - 915
+  length_m: 23.32
+  width_m: 68.0
+  calibrated: false
+tracker:
+  model_path: models/best.pt
+  batch_size: 20
+  confidence: 0.1
+  ball_confidence: 0.3
+  track_high_thresh: 0.25
+  track_low_thresh: 0.1
+  new_track_thresh: 0.25
+  match_thresh: 0.8
+  fuse_score: true
+  track_buffer_seconds: 1.25
+ball:
+  max_interpolation_seconds: 0.5
+  max_possession_distance_px: 70.0
+camera:
+  model: homography
+  detector_scale: 0.5
+  max_features: 2000
+  ratio_test: 0.75
+  min_matches: 25
+  min_inliers: 20
+  max_corners: 500
+  quality_level: 0.1
+  min_distance: 7
+  block_size: 7
+  refresh_below_fraction: 0.5
+  refresh_every_frames: 30
+  ransac_threshold: 3.0
+  deadzone_px: 0.25
+speed:
+  window_seconds: 0.25
+  smoothing_seconds: 0.5
+  noise_floor_m: 0.05
+  max_plausible_kmh: 36.0
+team:
+  fit_frames: 30
+  vote_observations: 10
+overlay:
+  possession_box:
+  - 0.703
+  - 0.787
+  - 0.99
+  - 0.898
+  camera_box:
+  - 0.0
+  - 0.0
+  - 0.26
+  - 0.093
+  draw_camera_movement: true
+  draw_speed_distance: true
+  draw_possession: true
